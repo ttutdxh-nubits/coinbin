@@ -230,8 +230,8 @@ $(document).ready(function() {
 				h += '<td class="col-xs-7 txid"><input class="form-control" type="text" value="'+o.outpoint.hash+'" readonly></td>';
 				h += '<td class="n" >'+o.outpoint.index+'</td>';
 				h += '<td class="ammount" data-inputid="'+(i)+'"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span></td>';
-				//h += '<td class="script"><input class="form-control" type="text" value="'+Crypto.util.bytesToHex(o.script.buffer)+'" readonly></td>';
-				h += '<td class="script"><a href="#" data-index-inputscript="'+i+'">Advanced</a>';
+				h += '<td class="script"><input class="form-control" type="text" value="'+Crypto.util.bytesToHex(o.script.buffer)+'" readonly><a href="#" data-index-inputscript="'+i+'">Advanced</a></td>';
+				//h += '<td class="script"><a href="#" data-index-inputscript="'+i+'">Advanced</a>';
 				h += '<td class="signed">';
 					h += '<span class="glyphicon glyphicon-'+((s.signed=='true')?'ok':'remove')+'-circle"></span>';
 					if(s['type']=='multisig' && s['signatures']>=1){
@@ -328,7 +328,8 @@ $(document).ready(function() {
 					h += '<td class="col-xs-5"><input class="form-control" type="text" value="'+addr+'" readonly></td>';
 					h += '<td class="col-xs-5"><input class="form-control" type="text" value="'+identity+'" readonly></td>';
 					h += '<td class="">'+coinjs.formatAmount(o.value)+'</td>';
-					h += '<td class=""><a href="#" data-index-outputscript="'+i+'">Advanced</a></td>';
+					h += '<td class="col-xs-2"><input class="form-control" type="text" value="'+Crypto.util.bytesToHex(o.script.buffer)+'" readonly><a href="#" data-index-outputscript="'+i+'">Advanced</a></td>';
+					//h += '<td class=""><a href="#" data-index-outputscript="'+i+'">Advanced</a></td>';
 					h += '</tr>';
 				}
 			});
@@ -502,6 +503,9 @@ $(document).ready(function() {
 				$("#verifyHDaddress .depth").val(hd.depth);
 				$("#verifyHDaddress .version").val('0x'+(hd.version).toString(16));
 				$("#verifyHDaddress .child_index").val(hd.child_index);
+				$("#verifyHDaddress .hdpub").val(hd.keys_extended.pubkey);
+				$("#verifyHDaddress .hdaddress").val(hd.keys.address);
+				$("#verifyHDaddress .hdpubkey").val(hd.keys.pubkey);
 				$("#verifyHDaddress .hdwifkey").val((hd.keys.wif)?hd.keys.wif:'');
 				$("#verifyHDaddress .key_type").html((((hd.depth==0 && hd.child_index==0)?'Master':'Derived')+' '+hd.type).toLowerCase());
 				$("#verifyHDaddress .parent_fingerprint").val(Crypto.util.bytesToHex(hd.parent_fingerprint));
@@ -529,6 +533,7 @@ $(document).ready(function() {
 			html += '<td><input type="text" class="form-control" value="'+derived.keys.address+'" readonly></td>';
 			html += '<td><input type="text" class="form-control" value="'+((derived.keys.wif)?derived.keys.wif:'')+'" readonly></td>';
 			html += '<td><input type="text" class="form-control" value="'+derived.keys_extended.pubkey+'" readonly></td>';
+			html += '<td><input type="text" class="form-control" value="'+derived.keys.pubkey+'" readonly></td>';
 			html += '<td><input type="text" class="form-control" value="'+((derived.keys_extended.privkey)?derived.keys_extended.privkey:'')+'" readonly></td>';
 			html += '</tr>';
 		}
