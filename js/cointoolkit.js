@@ -648,11 +648,12 @@ $(document).ready(function() {
 					type: "POST",
 					url: endpoint + "/api/v1/sendrawtx",
 					data: {
-						"rawTx": '"' + $("#rawTransaction").val() + '"',
+						"rawTx": $("#rawTransaction").val(),
 						"checkInputs": 1
 					},
 					dataType: "json",
 					error: function(data) {
+						data = $.parseJSON(data.responseText);
 						var r = '';
 						r += (data.data) ? data.data : '';
 						r += (data.status) ? ' '+data.status : '';
@@ -660,10 +661,11 @@ $(document).ready(function() {
 						$("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
 					},
 					success: function(data) {
-						if((data.status && data.data) && data.success==true){
+						data = $.parseJSON(data.responseText);
+						if(data.success==true){
 							$("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: '+data.data);
 						} else {
-							$("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+							$("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Error'+data.status).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
 						}
 					},
 					complete: function(data, status) {
@@ -745,11 +747,12 @@ $(document).ready(function() {
 					type: "POST",
 					url: endpoint + "/api/v1/sendrawtx",
 					data: {
-						"rawTx": '"' + $("#rawTransaction").val() + '"',
+						"rawTx": $("#rawTransaction").val(),
 						"checkInputs": 1
 					},
 					dataType: "json",
 					error: function(data) {
+						data = $.parseJSON(data.responseText);
 						var r = '';
 						r += (data.data) ? data.data : '';
 						r += (data.status) ? ' '+data.status : '';
@@ -757,15 +760,16 @@ $(document).ready(function() {
 						$("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
 					},
 					success: function(data) {
-						if((data.status && data.data) && data.success==true){
+						data = $.parseJSON(data.responseText);
+						if(data.success==true){
 							$("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: '+data.data);
 						} else {
-							$("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
-						}				
+							$("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Error'+data.status).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+						}
 					},
 					complete: function(data, status) {
 						$("#rawTransactionStatus").fadeOut().fadeIn();
-						$(thisbtn).html(orig_html).attr('disabled',false);				
+						$(thisbtn).html(orig_html).attr('disabled',false);
 					}
 				});
 			}
