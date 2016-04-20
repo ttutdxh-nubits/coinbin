@@ -727,7 +727,9 @@ $(document).ready(function() {
 									script = script.replace(' OP_CHECKSIG', 'ac');
 								}
 
-								addOutput(data.txs[i].hash, data.txs[i].out_index, script, data.txs[i].amount);
+								var amount = (data.txs[i].amount/("1e"+coinjs.decimalPlaces)).toFixed(coinjs.decimalPlaces);
+
+								addOutput(data.txs[i].hash, data.txs[i].out_index, script, amount);
 							}
 							$("#redeemFromAddress").removeClass('hidden').html(msgSucess);
 						}
