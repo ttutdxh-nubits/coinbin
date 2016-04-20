@@ -587,13 +587,23 @@ $(document).ready(function() {
 				var msgError = '<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs! Is <a href="' + endpoint + '/">' + endpoint + '/</a> down?';
 				$.ajax ({
 					type: "GET",
-					url: 'https://crossorigin.me/' + endpoint + '/api/v1/addressUnspent/' + redeem.addr,
+					data: {
+						format: "json",
+						q: "select * from json where url='" + endpoint + "/api/v1/addressUnspent/" + redeem.addr + "'"
+					},
+					url: 'https://query.yahooapis.com/v1/public/yql',
 					dataType: "json",
 					error: function(data) {
 						$("#redeemFromStatus").removeClass('hidden').html(msgError);
 						$("#redeemFromBtn").html("Load").attr('disabled',false);
 					},
 					success: function(data) {
+						if (data.hasOwnProperty('query') && data.query.hasOwnProperty('results') && data.query.results.hasOwnProperty('json') && data.query.results.json.hasOwnProperty('json')) {
+							data = data.query.results.json.json;
+						} else {
+							data = [];
+						}
+
 						if (coinjs.debug) {console.log(data)};
 						if (data.length == 0) {
 							$("#redeemFromStatus").removeClass('hidden').html(msgError);
@@ -624,12 +634,22 @@ $(document).ready(function() {
 			return function(txid, index, callback) {
 				$.ajax ({
 					type: "GET",
-					url: 'https://crossorigin.me/' + endpoint + '/api/v1/txDetails/' + txid,
+					data: {
+						format: "json",
+						q: "select * from json where url='" + endpoint + '/api/v1/txDetails/' + txid + "'"
+					},
+					url: 'https://query.yahooapis.com/v1/public/yql',
 					dataType: "json",
 					error: function(data) {
 						callback(false);
 					},
 					success: function(data) {
+						if (data.hasOwnProperty('query') && data.query.hasOwnProperty('results') && data.query.results.hasOwnProperty('json') && data.query.results.json.hasOwnProperty('json')) {
+							data = data.query.results.json.json;
+						} else {
+							data = [];
+						}
+
 						if (coinjs.debug) {console.log(data)};
 						if (data.exists && data.outputs[index]) {
 							callback(parseInt(data.outputs[index].outValInt*("1e"+coinjs.decimalPlaces), 10));
@@ -723,12 +743,22 @@ $(document).ready(function() {
 			return function(txid, index, callback) {
 				$.ajax ({
 					type: "GET",
-					url: 'https://crossorigin.me/' + endpoint + '/api/v1/tx/' + txid,
+					data: {
+						format: "json",
+						q: "select * from json where url='" + endpoint + '/api/v1/tx/' + txid + "'"
+					},
+					url: 'https://query.yahooapis.com/v1/public/yql',
 					dataType: "json",
 					error: function(data) {
 						callback(false);
 					},
 					success: function(data) {
+						if (data.hasOwnProperty('query') && data.query.hasOwnProperty('results') && data.query.results.hasOwnProperty('json') && data.query.results.json.hasOwnProperty('json')) {
+							data = data.query.results.json.json;
+						} else {
+							data = [];
+						}
+
 						if (coinjs.debug) {console.log(data)};
 						if (data.timestamp && data.outputs[index]) {
 							callback(parseInt(data.outputs[index].out_val, 10));
