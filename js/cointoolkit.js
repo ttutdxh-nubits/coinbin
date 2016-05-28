@@ -1057,6 +1057,8 @@ $(document).ready(function() {
 		nubits: {
 			listUnspent: {
 				"blockexplorer.nu": nuBasedExplorer.listUnspent('https://blockexplorer.nu'),
+				"nuexplorer.ddns.net": nuBasedExplorer.listUnspent('https://nuexplorer.ddns.net'),
+
 				"FLOT @dysconnect git-multisig repository": function(redeem) {
 					gitmultisig_listunspent(redeem, "dc-tcs/flot-operations");
 				},
@@ -1068,21 +1070,26 @@ $(document).ready(function() {
 				},
 			},
 			broadcast: {
-				"blockexplorer.nu": nuBasedExplorer.broadcast('https://blockexplorer.nu')
+				"blockexplorer.nu": nuBasedExplorer.broadcast('https://blockexplorer.nu'),
+				"nuexplorer.ddns.net": nuBasedExplorer.broadcast('https://nuexplorer.ddns.net')
 			},
 			getInputAmount: {
-				"blockexplorer.nu": nuBasedExplorer.getInputAmount('https://blockexplorer.nu')
+				"blockexplorer.nu": nuBasedExplorer.getInputAmount('https://blockexplorer.nu'),
+				"nuexplorer.ddns.net": nuBasedExplorer.getInputAmount('https://nuexplorer.ddns.net')
 			}
 		},
 		nushares: {
 			listUnspent: {
-				"blockexplorer.nu": nuBasedExplorer.listUnspent('https://blockexplorer.nu')
+				"blockexplorer.nu": nuBasedExplorer.listUnspent('https://blockexplorer.nu'),
+				"nuexplorer.ddns.net": nuBasedExplorer.listUnspent('https://nuexplorer.ddns.net')
 			},
 			broadcast: {
-				"blockexplorer.nu": nuBasedExplorer.broadcast('https://blockexplorer.nu')
+				"blockexplorer.nu": nuBasedExplorer.broadcast('https://blockexplorer.nu'),
+				"nuexplorer.ddns.net": nuBasedExplorer.broadcast('https://nuexplorer.ddns.net')
 			},
 			getInputAmount: {
-				"blockexplorer.nu": nuBasedExplorer.getInputAmount('https://blockexplorer.nu')
+				"blockexplorer.nu": nuBasedExplorer.getInputAmount('https://blockexplorer.nu'),
+				"nuexplorer.ddns.net": nuBasedExplorer.getInputAmount('https://nuexplorer.ddns.net')
 			}
 		},
 		blockcredits: {
