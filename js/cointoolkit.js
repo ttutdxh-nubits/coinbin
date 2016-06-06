@@ -600,6 +600,8 @@ $(document).ready(function() {
 					success: function(data) {
 						if (data.hasOwnProperty('query') && data.query.hasOwnProperty('results') && data.query.results.hasOwnProperty('json') && data.query.results.json.hasOwnProperty('json')) {
 							data = data.query.results.json.json;
+						} else if (data.hasOwnProperty('query') && data.query.hasOwnProperty('results') && data.query.results.hasOwnProperty('json')){
+							data = [data.query.results.json];
 						} else {
 							data = [];
 						}
