@@ -1058,8 +1058,8 @@ $(document).ready(function() {
 		},
 		nubits: {
 			listUnspent: {
-				"blockexplorer.nu": nuBasedExplorer.listUnspent('https://blockexplorer.nu'),
 				"nuexplorer.ddns.net": nuBasedExplorer.listUnspent('https://nuexplorer.ddns.net'),
+				"blockexplorer.nu": nuBasedExplorer.listUnspent('https://blockexplorer.nu'),
 
 				"FLOT @dysconnect git-multisig repository": function(redeem) {
 					gitmultisig_listunspent(redeem, "dc-tcs/flot-operations");
@@ -1072,26 +1072,26 @@ $(document).ready(function() {
 				},
 			},
 			broadcast: {
-				"blockexplorer.nu": nuBasedExplorer.broadcast('https://blockexplorer.nu'),
-				"nuexplorer.ddns.net": nuBasedExplorer.broadcast('https://nuexplorer.ddns.net')
+				"nuexplorer.ddns.net": nuBasedExplorer.broadcast('https://nuexplorer.ddns.net'),
+				"blockexplorer.nu": nuBasedExplorer.broadcast('https://blockexplorer.nu')
 			},
 			getInputAmount: {
-				"blockexplorer.nu": nuBasedExplorer.getInputAmount('https://blockexplorer.nu'),
-				"nuexplorer.ddns.net": nuBasedExplorer.getInputAmount('https://nuexplorer.ddns.net')
+				"nuexplorer.ddns.net": nuBasedExplorer.getInputAmount('https://nuexplorer.ddns.net'),
+				"blockexplorer.nu": nuBasedExplorer.getInputAmount('https://blockexplorer.nu')
 			}
 		},
 		nushares: {
 			listUnspent: {
-				"blockexplorer.nu": nuBasedExplorer.listUnspent('https://blockexplorer.nu'),
-				"nuexplorer.ddns.net": nuBasedExplorer.listUnspent('https://nuexplorer.ddns.net')
+				"nuexplorer.ddns.net": nuBasedExplorer.listUnspent('https://nuexplorer.ddns.net'),
+				"blockexplorer.nu": nuBasedExplorer.listUnspent('https://blockexplorer.nu')
 			},
 			broadcast: {
-				"blockexplorer.nu": nuBasedExplorer.broadcast('https://blockexplorer.nu'),
-				"nuexplorer.ddns.net": nuBasedExplorer.broadcast('https://nuexplorer.ddns.net')
+				"nuexplorer.ddns.net": nuBasedExplorer.broadcast('https://nuexplorer.ddns.net'),
+				"blockexplorer.nu": nuBasedExplorer.broadcast('https://blockexplorer.nu')
 			},
 			getInputAmount: {
-				"blockexplorer.nu": nuBasedExplorer.getInputAmount('https://blockexplorer.nu'),
-				"nuexplorer.ddns.net": nuBasedExplorer.getInputAmount('https://nuexplorer.ddns.net')
+				"nuexplorer.ddns.net": nuBasedExplorer.getInputAmount('https://nuexplorer.ddns.net'),
+				"blockexplorer.nu": nuBasedExplorer.getInputAmount('https://blockexplorer.nu')
 			}
 		},
 		blockcredits: {
